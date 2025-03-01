@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: apple-system, "San Francisco", "Helvetica Neue", Roboto, "Segoe WP", "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono);
+  --bumble-yellow: #ffc629;
+  --bumble-font: apple-system, "San Francisco", "Helvetica Neue", Roboto, "Segoe WP", "Segoe UI", sans-serif;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #171717; 
+  --bumble-yellow: #ffc629;
+  --bumble-font: apple-system, "San Francisco", "Helvetica Neue", Roboto, "Segoe WP", "Segoe UI", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,5 +24,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
