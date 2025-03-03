@@ -1,8 +1,6 @@
 "use client";
-
 import Image from "next/image";
 import { useState, useRef, MouseEvent, TouchEvent } from "react";
-import { Pill } from "./components/pill";
 
 export default function Home() {
   const [offset, setOffset] = useState(0);
@@ -21,14 +19,6 @@ export default function Home() {
     if (Math.abs(diff) > 40) setOffset(diff); // prevent slightly diagonal scrolling from cauysing issues
   };
 
-  const swipeLeft = () => {
-    alert("Are you sure about that?");
-  };
-
-  const swipeRight = () => {
-    console.debug('show "its a match! popup');
-  };
-
   const handleDragEnd = () => {
     setIsDragging(false);
     if (Math.abs(offset) > 200) {
@@ -36,9 +26,9 @@ export default function Home() {
       const direction = offset > 0 ? "right" : "left";
       console.log(`Swiped ${direction}`);
       if (direction === "left") {
-        swipeLeft();
+        alert("Are you sure about that?");
       } else {
-        swipeRight();
+        console.debug('show "its a match! popup');
       }
     }
     setOffset(0);
@@ -60,7 +50,7 @@ export default function Home() {
         <span className="material-icons">tune</span>
       </header>
       <main
-        className="bg-(--bumble-yellow-light) h-full w-full flex-1 overflow-scroll rounded-lg"
+        className="h-9/10 bg-(--bumble-yellow-light) w-full flex-1 overflow-scroll rounded-lg"
         onMouseDown={handleDragStart}
         onMouseMove={handleDragMove}
         onMouseUp={handleDragEnd}
@@ -92,18 +82,14 @@ export default function Home() {
 
           <div className="p-4">
             <div className="text-[var(--bumble-background-text)]">About me</div>
-            I&apos;m just a boy looking for a very special girl on her birthday.
-            Do you think you could help me?
+            I&apos;m just a boy looking for a very special girl on her birthday
             <div className="text-[var(--bumble-background-text)]">
               My basics
-              <div className="flex flex-wrap gap-1 py-2">
-                <Pill caption="Active-ish" icon="fitness_center" />
-                <Pill caption="Man" icon="man" />
-                <Pill caption="Short King" icon="straighten" />
-                <Pill caption="On very special occasions" icon="wine_bar" />
-                <Pill caption="Absolutely not" icon="stroller" />
-                <Pill caption="Too many" icon="directions_bike" />
-                <Pill caption="Very obsessive" icon="train" />
+              <div className="flex py-2">
+                <div className="bg-(--bumble-yellow-med) flex gap-1 rounded-full px-2 font-normal text-black">
+                  <span className="material-icons">fitness_center</span>
+                  Active-ish
+                </div>
               </div>
             </div>
           </div>
@@ -116,9 +102,7 @@ export default function Home() {
             className="h-full w-full overflow-hidden object-cover" // optional
             priority
           />
-          <div className="p-4">
-            PS: I think that means you should swipe right
-          </div>
+          <div className="p-4">Do you think you could help me?</div>
           <Image
             src="/rachel-birthday/my-face.jpg"
             alt="My face"
@@ -130,20 +114,7 @@ export default function Home() {
           />
         </div>
       </main>
-      <footer className="flex flex-wrap items-center justify-evenly">
-        <button
-          className="flex h-[70px] w-[70px] items-center justify-center rounded-full text-[var(--bumble-background-text)] shadow-2xl active:bg-gray-200"
-          onClick={swipeLeft}
-        >
-          <span className="material-icons text-6xl! select-none">close</span>
-        </button>
-        <button
-          className="flex h-[70px] w-[70px] items-center justify-center rounded-full text-[var(--bumble-yellow)] shadow-2xl active:bg-gray-200"
-          onClick={swipeRight}
-        >
-          <span className="material-icons text-6xl! select-none">favorite</span>
-        </button>
-      </footer>
+      <footer className="flex flex-wrap items-center justify-center gap-6"></footer>
     </div>
   );
 }

@@ -11,6 +11,9 @@
   --background: #ffffff;
   --foreground: #171717; 
   --bumble-yellow: #ffc629;
+  --bumble-yellow-light: #fdf8e3;
+  --bumble-yellow-med: #fdedbd;
+  --bumble-background-text: #69665e;
   --bumble-font: apple-system, "San Francisco", "Helvetica Neue", Roboto, "Segoe WP", "Segoe UI", sans-serif;
 }
 
