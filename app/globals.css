@@ -18,8 +18,17 @@
 
 }
 
+.pop{
+	animation: pop 0.3s linear 1;
+  }
+
+@keyframes pop{
+	50%  {transform: scale(1.2);}
+  }
+  
+
 [popover] {
-	animation: fadeIn 0.5s ease-out;
+	animation: fadeIn 1s ease-out;
   }
   
   @keyframes fadeIn {
@@ -43,3 +52,33 @@ body {
   background: var(--background);
   font-family: var(--font-sans);
 }
+
+ .dot {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin-right: 0.5px;
+	background: var( --bumble-background-text);
+	animation: wave 1s linear infinite;
+	animation-delay: -0.9s;
+  }
+
+  
+ .dot.two {
+	animation-delay: -0.7s;
+  }
+   .dot:nth-child(3) {
+	animation-delay: -0.6s;
+  }
+  
+  @keyframes wave {
+	0%,
+	  60%,
+	  100% {
+	  transform: initial;
+	}
+	30% {
+	  transform: translateY(-15px);
+	}
+  }
