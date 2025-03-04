@@ -3,11 +3,15 @@
 import Image from "next/image";
 import { useState, useRef, MouseEvent, TouchEvent } from "react";
 import { Pill } from "./components/pill";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const startXRef = useRef(0);
+  const router = useRouter();
+  const popoverRef = useRef<HTMLDivElement>(null);
 
   const handleDragStart = (e: MouseEvent | TouchEvent) => {
     setIsDragging(true);
@@ -27,6 +31,12 @@ export default function Home() {
 
   const swipeRight = () => {
     console.debug('show "its a match! popup');
+    // router.push("/messages");
+    console.log(popoverRef);
+    if (popoverRef.current) {
+      popoverRef.current.showPopover();
+      popoverRef.current.popover = "true";
+    }
   };
 
   const handleDragEnd = () => {
@@ -140,10 +150,46 @@ export default function Home() {
         <button
           className="flex h-[70px] w-[70px] items-center justify-center rounded-full text-[var(--bumble-yellow)] shadow-2xl active:bg-gray-200"
           onClick={swipeRight}
+          popoverTarget="mydiv"
         >
           <span className="material-icons text-6xl! select-none">favorite</span>
         </button>
       </footer>
+      <div
+        popover="auto"
+        id="mydiv"
+        ref={popoverRef}
+        className="flex h-full w-full items-center justify-center bg-transparent backdrop-blur-md"
+      >
+        <div className="bg-(--bumble-yellow) flex h-3/4 w-3/4 flex-col items-center justify-center gap-6 rounded-lg p-10 text-white">
+          <h1 className="text-4xl font-bold">It&apos;s a match!</h1>
+          <div className="h-60px flex w-full justify-center gap-6">
+            <Image
+              src="/rachel-birthday/my-face.jpg"
+              alt="My face"
+              width={80}
+              height={80}
+              sizes="100vw"
+              className="border-3 overflow-hidden rounded-full border-white object-cover"
+              priority
+            />
+            <Image
+              src="/rachel-birthday/rachel.jpg"
+              alt="My face"
+              width={80}
+              height={80}
+              className="border-3 rounded-full border-white object-cover"
+              priority
+            />
+          </div>
+          <Link href="/messages">
+            <div className="text-l flex items-center rounded-lg bg-white p-2 text-black">
+              Send the first message now!
+              <div className="material-icons">send</div>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
