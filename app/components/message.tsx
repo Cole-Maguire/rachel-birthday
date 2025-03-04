@@ -33,6 +33,8 @@ export function Message(props: MessageProps): JSX.Element {
         setStage(2);
       }, props.readWait + props.typeWait);
     }
+    // only run at init
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return stage === 0 ? (
