@@ -39,7 +39,7 @@ export default function Messages() {
     },
     {
       message:
-        "but also, I brought presents! First, I'm going to send an image (and I promise it isn't the kind of image people usually send on dating apps)",
+        "but also, I brought presents! First, I'm going to send an picture (and I promise it isn't the kind of pic people usually send on dating apps)",
       direction: "received",
       readWait: 50,
       typeWait: 1500,
@@ -52,7 +52,7 @@ export default function Messages() {
     },
     {
       message:
-        "Then, I wanted to make sure you could sleep at night while you're on holiday, so I managed to track down what I think might be an old favourite (I've got a higher quality version hiding away at home as well)",
+        "I hope you're hungry! I also wanted to make sure you could sleep at night while you're on holiday, so I managed to track down what I think might be an old favourite (I've got a higher quality version hiding away at home as well)",
       direction: "received",
       readWait: 100,
       typeWait: 1500,
@@ -124,12 +124,12 @@ export default function Messages() {
     scriptWait(5);
     scriptWait(6);
 
-    scriptWait(8);
     scriptWait(9);
+    scriptWait(10);
   }, [textStep, messages]);
 
   return (
-    <div className="flex h-dvh min-h-screen grid-flow-row flex-col overflow-hidden font-[family-name:var(--bumble-font)]">
+    <div className="flex h-dvh min-h-dvh grid-flow-row flex-col overflow-hidden font-[family-name:var(--bumble-font)]">
       <header className="flex h-[50px] w-full min-w-min shrink items-center justify-between p-8">
         <div className="flex items-center gap-2">
           <div className="material-icons text-[var(--bumble-background-text)]">

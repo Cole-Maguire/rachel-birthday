@@ -55,7 +55,7 @@ export default function Home() {
       <header className="flex w-full min-w-min shrink justify-between">
         <div>
           <Image
-            className="dark:invert"
+            // className="dark:invert"
             src="/rachel-birthday/bumble-logo.png"
             alt="bumble logo"
             width={100}

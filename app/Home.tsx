@@ -35,11 +35,11 @@ export default function Home() {
   };
 
   return (
-    <div className="flex grid h-dvh min-h-screen grid-flow-row gap-6 overflow-hidden p-8 font-[family-name:var(--bumble-font)]">
+    <div className="flex grid h-dvh min-h-dvh grid-flow-row gap-6 overflow-hidden p-8 font-[family-name:var(--bumble-font)]">
       <header className="flex w-full min-w-min shrink justify-between">
         <div>
           <Image
-            className="dark:invert"
+            // className="dark:invert"
             src="/rachel-birthday/bumble-logo.png"
             alt="bumble logo"
             width={100}
