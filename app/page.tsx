@@ -37,7 +37,7 @@ export default function Home() {
 
   const handleDragEnd = () => {
     setIsDragging(false);
-    if (Math.abs(offset) > 200) {
+    if (Math.abs(offset) > 180) {
       // Swipe threshold
       const direction = offset > 0 ? "right" : "left";
       console.log(`Swiped ${direction}`);
@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex grid h-dvh min-h-screen grid-flow-row gap-6 overflow-hidden p-8 font-[family-name:var(--bumble-font)]">
+    <div className="flex grid h-dvh min-h-dvh grid-flow-row gap-6 overflow-hidden p-8 font-[family-name:var(--bumble-font)]">
       <header className="flex w-full min-w-min shrink justify-between">
         <div>
           <Image
