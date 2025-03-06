@@ -29,7 +29,6 @@ export default function Home() {
 
   const swipeRight = () => {
     console.debug('show "its a match! popup');
-    // router.push("/messages");
     console.log(popoverRef);
     if (popoverRef.current) {
       popoverRef.current.showPopover();
@@ -83,7 +82,7 @@ export default function Home() {
           <div>
             <Image
               src="/rachel-birthday/blurred-main.png"
-              alt="My face"
+              alt="photo of me and *censored*"
               width={0}
               height={0}
               sizes="100vw"
@@ -116,11 +115,11 @@ export default function Home() {
           </div>
           <Image
             src="/rachel-birthday/back-fall.jpg"
-            alt="My face"
+            alt="Back breakfall"
             width={0}
             height={0}
             sizes="100vw"
-            className="h-full w-full overflow-hidden object-cover" // optional
+            className="h-full w-full overflow-hidden object-cover"
             priority
           />
           <div className="p-4">
@@ -132,7 +131,7 @@ export default function Home() {
             width={0}
             height={0}
             sizes="100vw"
-            className="w-full overflow-hidden object-cover" // optional
+            className="w-full overflow-hidden object-cover"
             priority
           />
         </div>

@@ -2,11 +2,11 @@ import { JSX, useEffect, useState } from "react";
 
 export type MessageProps =
   | {
-      message: string;
+      message: JSX.Element | string;
       direction: "sent";
     }
   | {
-      message: string;
+      message: JSX.Element | string;
       direction: "received";
       readWait: number;
       typeWait: number;
@@ -40,7 +40,7 @@ export function Message(props: MessageProps): JSX.Element {
   return stage === 0 ? (
     <></>
   ) : stage === 1 ? (
-    <div className={`${styles}`}>
+    <div className={styles}>
       <div className="flex h-[30px] w-full grow items-center justify-center gap-3">
         <span className="dot one"></span>
         <span className="dot two"></span>

@@ -2,22 +2,32 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { AudioMessage } from "../components/audioMessage";
+import { ImageMessage } from "../components/imageMessage";
 import { Message, MessageProps } from "../components/message";
 
 export default function Messages() {
-  const [textStep, setTextStep] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [textStep, setTextStep] = useState(-1);
   const [messages, setMessages] = useState<MessageProps[]>([
     {
-      message: "Hi there!",
+      message: "Hi there! ",
       direction: "received",
       readWait: 1000,
       typeWait: 1000,
     },
     {
-      message:
-        "So it looks like it's your birthday, huh? Well in that case, I hope you have an incredible birthday in a (not-so) far-off land!",
+      message: "What're you up to today? ",
       direction: "received",
-      readWait: 100,
+      readWait: 300,
+      typeWait: 1000,
+    },
+    {
+      message:
+        "So it's your birthday, huh? Well in that case, I hope you have an incredible day in a (not-so) far-off land!",
+      direction: "received",
+      readWait: 50,
       typeWait: 2500,
     },
     {
@@ -35,7 +45,7 @@ export default function Messages() {
       typeWait: 1500,
     },
     {
-      message: "<SUGAR_DEALER_IMAGE>",
+      message: <ImageMessage setTextStep={setTextStep} />,
       direction: "received",
       readWait: 0,
       typeWait: 0,
@@ -48,7 +58,7 @@ export default function Messages() {
       typeWait: 1500,
     },
     {
-      message: "<AUDIO>",
+      message: <AudioMessage setTextStep={setTextStep} />,
       direction: "received",
       readWait: 0,
       typeWait: 0,
@@ -56,19 +66,23 @@ export default function Messages() {
     {
       message: "Finally, I want you to look behind you",
       direction: "received",
-      readWait: 100,
+      readWait: 5000,
       typeWait: 800,
     },
+    {
+      message: "Happy Birthday, Rachel!",
+      direction: "received",
+      readWait: 100,
+      typeWait: 500,
+    },
   ]);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const onTextSubmit = () => {
-    console.debug(textStep);
     if (inputRef.current) {
       const sentMessage = inputRef.current.value;
       setMessages((prev) => {
         const newPrev = [...prev]; // because of reacts state nonsense
-        newPrev.splice(textStep, 0, {
+        newPrev.splice(textStep + 1, 0, {
           message: sentMessage,
           direction: "sent",
         });
@@ -83,6 +97,7 @@ export default function Messages() {
   useEffect(() => {
     const scriptWait = (expectedStep: number): void => {
       if (textStep == expectedStep) {
+        console.debug(textStep);
         const wait = messages
           .slice(expectedStep - 1, expectedStep + 1)
           .reduce<number>(
@@ -101,15 +116,16 @@ export default function Messages() {
     };
 
     //janky af scripting
+    scriptWait(0);
     scriptWait(1);
-    scriptWait(2);
+
     scriptWait(3);
     scriptWait(4);
     scriptWait(5);
-    scriptWait(6); // todo -replace with script on image open
+    scriptWait(6);
 
-    scriptWait(7);
     scriptWait(8);
+    scriptWait(9);
   }, [textStep, messages]);
 
   return (
@@ -139,22 +155,14 @@ export default function Messages() {
         {textStep > 0 &&
           messages
             .slice(0, textStep + 1)
-            .map((message, i) => (
-              <Message
-                key={i}
-                direction={message.direction}
-                message={message.message}
-                readWait={"readWait" in message ? message.readWait : 0}
-                typeWait={"typeWait" in message ? message.typeWait : 0}
-              />
-            ))}
+            .map((message, i) => <Message key={i} {...message} />)}
       </main>
       <footer className="flex h-[70px] flex-wrap items-center justify-evenly">
         <div className="flex w-full items-center gap-2 p-4">
           <input
             type="text"
             placeholder={
-              textStep === 0 ? "Be the one to send the first message!" : "Aa"
+              textStep <= 0 ? "Be the one to send the first message!" : "Aa"
             }
             className="grow rounded-full border border-gray-200 p-2"
             ref={inputRef}
