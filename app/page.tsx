@@ -63,7 +63,7 @@ export default function Home() {
 
     setTimeout(() => {
       logoPopoverRef.current?.hidePopover();
-    }, 3500);
+    }, 4000);
   }, []);
 
   return (

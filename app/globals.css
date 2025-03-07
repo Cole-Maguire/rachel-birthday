@@ -41,12 +41,15 @@
   }
 
   [popover].slide-off  {
-	animation: offScreen 0.5s ease-out ;
+	animation: offScreen 1s ease-out ;
   }
   
   @keyframes offScreen {
-	100% {
-	  transform:  translateY(-1000px);
+	from {
+		opacity: 1;
+	  }
+	  to {
+		opacity: 0;
 	  }
 	}
 
