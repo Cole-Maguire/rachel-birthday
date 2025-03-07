@@ -27,7 +27,7 @@
   }
   
 
-[popover] {
+[popover]:not(#splash-screen) {
 	animation: fadeIn 1s ease-out;
   }
   
@@ -40,12 +40,16 @@
 	}
   }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  [popover].slide-off  {
+	animation: offScreen 0.5s ease-out ;
   }
-} */
+  
+  @keyframes offScreen {
+	100% {
+	  transform:  translateY(-1000px);
+	  }
+	}
+
 
 body {
   color: var(--foreground);
