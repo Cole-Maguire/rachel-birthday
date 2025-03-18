@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This was a very hastily made website, that I built for my girlfriend's birthday to simulate Bumble (where we originally met.)
 
 ## Getting Started
 
